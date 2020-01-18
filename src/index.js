@@ -63,13 +63,8 @@ testHook();
 cron.schedule('0,15,30,45 * * * * *', () =>
     iota.getBalances([process.env.IOTA_ADDRESS], 100)
         .then(({ balances }) => {
-            // console.log(`${lastBalance} --> ${balances[0]}`);
             if(lastBalance === null) lastBalance = balances[0];
             if(lastBalance > balances[0]) sendHook();
             lastBalance = balances[0];
-            console.log(process.env.IOTA_ADDRESS)
         })
 );
-
-
-
